@@ -21,14 +21,12 @@
 
 ## Overview
 
-This repository contains a simulation of the double inveted pendulum cart system. Nonlinear programming is used to find the  optimal trajectory between two system states with a smooth force input while balencing the system in the inverted position is accomplished by constructing an linear quadratic regulator to optimally place the poles of the system. The project includes an plotting helper functions and an interactive plot with togglable controls for the user to give the system preturbations and see how it responds. The intent of this project is to use python to simulate the system in lieu of matlab or simulink so that a real system can be swung up and balenced. 
+This repository contains code to simulate the double inveted pendulum cart system. The model includes viscous friction at the joints of the device. Nonlinear programming is used to find the optimal control input (force on the cart) to achieve the desired trajectory between two user-specified states while a LQR controller is used to balence the system in the inverted state. The project includes an interactive plot with controls that allow the user to disturb the system and observe its response in real time during either the trajectory or the balencing. The purpose of this project is to simulate the system in python and then use it to drive the modeling and control of a physical version.
 
 
 ## Background
 
-### What is a Double Inverted Pendulum?
-
-The double inverted pendulum cart (DIPC) is a classic example of a chaotic system in physics and is used in control theory and robotics to benchmark different control strategies. Control theorists are interested in the system because it is an underactuated system, meaning that it has more degrees of freedom (3), $\theta_{1}$, $\theta_{2}$, and x, than its number of independently controllable actuators (1), $u$. 
+The double inverted pendulum cart (DIPC) is a classic example of a chaotic system in physics and is used in control theory and robotics to benchmark different control strategies. Control theorists are interested in the system because it is an underactuated system, meaning that it has more degrees of freedom (3), $\theta_{1}$, $\theta_{2}$, and x, than independently controllable actuators (1), $u$. 
 
 ## Technical Approach
 
@@ -67,9 +65,9 @@ graph TD
     E --> H5
 ```
 
-### Equation of Motion
+### Equations of Motion
 
-The equation of motion describing the double inverted pendulum can be derived with lagrangian or newtonian mechanics; however, lagrangian mechanics were selected throughout this project because of their interpretability. For more background on this subject I recommend the text - Modern Robotics: Mechanics, Planning, and Control by Park and Lynch. 
+The equations of motion describing the double inverted pendulum can be derived with lagrangian or newtonian mechanics; however, lagrangian mechanics were used throughout this project because of their interpretability. For more background on this subject I recommend the text - Modern Robotics: Mechanics, Planning, and Control by Park and Lynch. 
 
 To best understand the dynamics of the double pendulum it is first important to understand how largrangian mechanics are implemented through the derivation of the equations of motion of the single inverted pendulum.
 

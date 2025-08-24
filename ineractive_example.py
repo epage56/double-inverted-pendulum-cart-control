@@ -7,10 +7,9 @@ from DIPC.model import DIPC
 from DIPC.trajectory_opt import solve_swingup_ocp
 from DIPC.control import get_lqr, make_u_lqr
 
-# note to the user - this could have been refactored into anither plotting functuin
-# but this is kind of a one time use so i didnt do that
+# note to the user - the plotting part of this code could be refactored
 
-params = DIPCParams()
+params = DIPCParams() # assign the parameters 
 
 # define the inital state and the final state
 x0 = np.array([-0.5, -np.pi/2, 0, 0, 0, 0])
@@ -30,7 +29,7 @@ tgrid_swing, u_swing = solve_swingup_ocp(
 # then linearize this model about the final (inverted) state 
 model = DIPC(params)
 f = model.f
-A, B  = model.linearize(xf, np.zeros((1,)))   # A, B continuous‐time
+A, B = model.linearize(xf, np.zeros((1,)))   # A, B continuous‐time
 
 # use helper functions get_lqr and make_u_lqr in the 
 # control file to make the controller
